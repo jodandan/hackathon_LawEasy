@@ -9,14 +9,14 @@ export const Container = styled.div`
 `;
 
 export const Comment = styled.div`
-    display: flex;
+    /* display: flex; */
     border-top: solid gray 2px;
     padding-top: 2%;
 `;
 
 export const EditContainer = styled.div`
   width: 75vw;
-  height: 100vh;
+  
   background-color: white;
   display: flex;
   flex-direction: column;

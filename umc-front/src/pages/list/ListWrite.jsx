@@ -4,6 +4,7 @@ import { AiOutlineCheckCircle } from "react-icons/ai";
 import { RxBox } from "react-icons/rx";
 
 import CATEGORIES from "../../constants/categories";
+import { addPost } from "../../api/api";
 
 const Container = styled.div`
   min-width: 100vw;
@@ -151,24 +152,28 @@ const ListWrite = () => {
   };
 
   const submitData = () => {
-    if (title.length === 0) {
+    if (title.length === 0 || title.length < 10) {
       alert("제목을 입력해주세요");
       return;
     }
-    if (content.length === 0) {
+    if (content.length === 0 || content.length < 200) {
       alert("본문을 입력해주세요");
       return;
     }
-    if (selected.length === 0) {
+    if (selected === "") {
       alert("카테고리를 선택해주세요");
       return;
     }
 
-    const data = {
-      title,
-      content,
-      selected,
-    };
+    addPost(
+      JSON.stringify({
+        title: title,
+        content: content,
+        category: "PROPERTY",
+      })
+    )
+      .then((res) => console.log(res))
+      .catch((e) => console.log(e));
   };
 
   return (
