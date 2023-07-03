@@ -165,11 +165,15 @@ const ListWrite = () => {
       return;
     }
 
-    addPost({
-      title: title,
-      content: content,
-      category: selected,
-    }).then((res) => console.log(res));
+    addPost(
+      JSON.stringify({
+        title: title,
+        content: content,
+        category: "PROPERTY",
+      })
+    )
+      .then((res) => console.log(res))
+      .catch((e) => console.log(e));
   };
 
   return (

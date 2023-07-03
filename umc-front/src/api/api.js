@@ -4,6 +4,8 @@ const axiosWithLaw = axios.create({
   baseURL: "http://43.202.93.57:8080",
   headers: {
     "Content-type": "application/json",
+    "X-ACCESS-TOKEN":
+      "eyJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJtZW1iZXJJZCI6MywiaWF0IjoxNjg4NDE1NzIzLCJleHAiOjE2ODk4ODY5NTJ9.ZVeDC-aHs7ZCaoImf26ej-49_jBTXVJp1b4opqRQK6s",
   },
 });
 
