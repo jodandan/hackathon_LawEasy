@@ -4,14 +4,18 @@ import { useLocation, NavLink, Outlet } from "react-router-dom";
 import LawyerProfile from './LawyerProfile'
 
 const MenuContainer = styled.div`
+  padding-left:25px;
   display: flex;
   justify-content: space-between;
   margin: 0px 120px;
   padding-bottom: 10px;
+  border-width: 100%;
   border-bottom: 1px solid #bcbcbc;
+  
 `;
 
 const MenuList = styled.ul`
+  
   display: flex;
   list-style: none;
   padding: 0;
@@ -40,6 +44,7 @@ const MenuLink = styled(NavLink)`
 `;
 
 const LawyerContainer = styled.div`
+  padding-left:25px;
   height: 600px;
 `;
 

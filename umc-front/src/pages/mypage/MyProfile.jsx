@@ -3,19 +3,24 @@ import React from "react";
 import styled from "styled-components";
 
 const HeaderUnder = styled.div`
-  margin-top: 50px;
+  margin-top: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
+const HistoryWrapper = styled.div`
+  padding-bottom:100px;
+`;
+
 const HistoryContainer = styled.div`
   background: #E6E6E6;
-  height: 400px;
+  height: 300px;
   width: 800px; /* Increase the width */
   text-align: center;
   margin: auto;
-  margin-top: 100px;
+  margin-top: 50px;
+  padding-bottom: 200px;
 `;
 
 const MyConsult = styled.div`
@@ -30,6 +35,7 @@ const MyConsult = styled.div`
 const Container = styled.div`
   background: #E6E6E6;
   padding: 30px; /* Adjust the padding as needed */
+
 `;
 
 const Writinglist = styled.ul`
@@ -42,6 +48,7 @@ const ListItem = styled.li`
   margin-bottom: 25px;
   padding-bottom: 20px;
   text-align: left;
+  
 `;
 
 function MyProfile() {
@@ -50,18 +57,20 @@ function MyProfile() {
       <HeaderUnder>
         <h2>마이페이지</h2>
       </HeaderUnder>
-      <HistoryContainer>
-        <MyConsult>내 상담내역</MyConsult>
-        <Container>
-          <Writinglist>
-            <ListItem>제목: 나 커밋안한다</ListItem>
-            <ListItem>제목: 다른 상담 내용</ListItem>
-            <ListItem>제목: 더 많은 상담 내용</ListItem>
-            <ListItem>제목: 다른 상담 내용</ListItem>
-            <ListItem>제목: 더 많은 상담 내용</ListItem>
-          </Writinglist>
-        </Container>
-      </HistoryContainer>
+      <HistoryWrapper>
+        <HistoryContainer>
+          <MyConsult>내 상담내역</MyConsult>
+          <Container>
+            <Writinglist>
+              <ListItem>제목: 나 커밋안한다</ListItem>
+              <ListItem>제목: 다른 상담 내용</ListItem>
+              <ListItem>제목: 더 많은 상담 내용</ListItem>
+              <ListItem>제목: 다른 상담 내용</ListItem>
+              <ListItem>제목: 더 많은 상담 내용</ListItem>
+            </Writinglist>
+          </Container>
+        </HistoryContainer>
+      </HistoryWrapper>
     </div>
   );
 }
