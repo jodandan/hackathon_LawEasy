@@ -51,6 +51,7 @@ const MainPage = () => {
     <Button>
     Try Laweasy
     </Button>
+    <Link to="/listDetail">상세</Link>
     </TextContainer>
     <Categories></Categories>
     </MainContainer>
