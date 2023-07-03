@@ -1,15 +1,20 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Edit from "./pages/post/Edit";
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/layouts/Headerco.jsx";
+import LawyerIntroduction from "./pages/lawyer/LawyerPage.jsx";
+import ListWrite from "./pages/list/ListPage.jsx";
 
-function App() {
+const App = () => {
   return (
-    <BrowserRouter>
-      <div>헤더 부분</div>
+    <Router>
+      <Header />
       <Routes>
-        <Route path="/edit" element={<Edit />} />
+        {/* <Route exact path="/" component={Home} /> */}
+        <Route path="/lawyer-introduction" element={<LawyerIntroduction />} />
+        <Route path="/listWrite" element={<ListWrite />} />
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
-}
+};
 
 export default App;
