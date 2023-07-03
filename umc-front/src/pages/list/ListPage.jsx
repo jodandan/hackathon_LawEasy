@@ -1,5 +1,8 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import styled from "styled-components";
+import { AiOutlineCheckCircle } from "react-icons/ai";
+import { RxBox } from "react-icons/rx";
+
 import CATEGORIES from "../../constants/categories";
 
 const Container = styled.div`
@@ -12,7 +15,7 @@ const Container = styled.div`
 
 const EditContainer = styled.div`
   width: 75vw;
-  height: 100vh;
+  min-height: 100vh;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -34,7 +37,7 @@ const EditDesc = styled.div`
   }
 `;
 
-const InputContainer = styled.form`
+const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -55,12 +58,12 @@ const Radio = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid rgba(0, 0, 0, 0.3);
+  transition: 0.2s all ease-in;
+  border: ${({ selected }) =>
+    selected ? "none" : "1px solid rgba(0, 0, 0, 0.3)"};
   border-radius: 10000px;
-
-  .select {
-    background-color: rgba(0, 0, 0, 0.3);
-  }
+  background-color: ${({ selected }) => (selected ? "#FF60D2" : "white")};
+  color: ${({ selected }) => (selected ? "white" : "black")};
 `;
 
 const InputBox = styled.div`
@@ -76,7 +79,7 @@ const InputBox = styled.div`
 
 const Input = styled.input`
   box-sizing: border-box;
-  height: 2rem;
+  padding: 0.725rem 0.5rem;
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   width: 100%;
@@ -95,6 +98,24 @@ const Textarea = styled.textarea`
   outline: none;
 `;
 
+const CheckDesc = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+`;
+
+const SubmitBtn = styled.button`
+  transition: 0.2s all ease-in;
+  border: 0;
+  background-color: transparent;
+  width: 100%;
+  padding: 0.725rem;
+  background-color: ${({ active }) => (active ? "#FF60D2" : "#cfcfcf")};
+  color: white;
+  font-size: 1.25rem;
+  border-radius: 10px;
+`;
+
 const Blur = styled.span`
   opacity: 0.7;
 `;
@@ -106,8 +127,8 @@ const Yellow = styled.span`
 const ListWrite = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-
-  const currentRef = useRef(null);
+  const [selected, setSelected] = useState("");
+  const [agree, setAgree] = useState(false);
 
   const changeTitle = (e) => {
     setTitle(e.target.value);
@@ -118,15 +139,41 @@ const ListWrite = () => {
   };
 
   const selectCategory = (e) => {
-    if (currentRef.current === e.target) return;
-    // console.log()
-    // currentRef.current.classList.remove("select");
-    // currentRef.current = e.target;
-    e.target.classList.add("select");
+    if (selected === e.target.innerText) {
+      setSelected("");
+      return;
+    }
+    setSelected(e.target.innerText);
+  };
+
+  const changeAgree = (e) => {
+    setAgree(!agree);
+  };
+
+  const submitData = () => {
+    if (title.length === 0) {
+      alert("제목을 입력해주세요");
+      return;
+    }
+    if (content.length === 0) {
+      alert("본문을 입력해주세요");
+      return;
+    }
+    if (selected.length === 0) {
+      alert("카테고리를 선택해주세요");
+      return;
+    }
+
+    const data = {
+      title,
+      content,
+      selected,
+    };
+
+    console.log(data);
   };
 
   return (
-
     <Container>
       <EditContainer>
         <EditDesc>
@@ -138,7 +185,11 @@ const ListWrite = () => {
         <InputContainer>
           <RadioBox>
             {CATEGORIES.map((category) => (
-              <Radio key={category} onClick={selectCategory}>
+              <Radio
+                selected={category === selected}
+                key={category}
+                onClick={selectCategory}
+              >
                 {category}
               </Radio>
             ))}
@@ -173,10 +224,45 @@ const ListWrite = () => {
               onChange={changeContent}
             />
           </InputBox>
+          <InputBox>
+            <CheckDesc>
+              <p>상담글 등록 전 반드시 확인해주세요!</p>
+              <ul>
+                <li>
+                  상담글 제목은 답변을 받기에 적합한 내용으로 일부 변경될 수
+                  있습니다.
+                </li>
+                <li>상담글에 변호사의 답변 등록 시 글 삭제가 불가합니다.</li>
+                <li>
+                  등록된 상담글은 네이버 지식인, 포털 사이트, 로톡 사이트에
+                  내용이 공개됩니다.
+                </li>
+                <li>
+                  아래 사항에 해당할 경우, 서비스 이용이 제한될 수 있습니다.
+                </li>
+                <li>
+                  개인정보(개인/법인 실명, 전화번호, 주민번호, 주소, 아이디 등)
+                  및 외부 링크가 포함된 경우
+                </li>
+                <li>변호사 선임 및 변호사 선임 비용과 관련된 질문인 경우</li>
+                <li>법률 문제 해결을 목적으로 작성한 상담글이 아닌 경우</li>
+                <li>
+                  동일/유사한 내용의 게시물을 지속적으로 반복 게재하는 경우
+                </li>
+                <li>의미없는 문자의 나열인 경우</li>
+              </ul>
+              <span onClick={changeAgree}>
+                {agree ? <AiOutlineCheckCircle /> : <RxBox />} 안내 사항을 모두
+                확인했으며, 동의합니다.
+              </span>
+            </CheckDesc>
+          </InputBox>
         </InputContainer>
+        <SubmitBtn onClick={submitData} active={agree}>
+          상담글 등록하기
+        </SubmitBtn>
       </EditContainer>
     </Container>
-
   );
 };
 
