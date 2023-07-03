@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useLocation, NavLink, Outlet } from "react-router-dom";
+import LawyerProfile from './LawyerProfile'
 
 const MenuContainer = styled.div`
   display: flex;
@@ -38,24 +39,31 @@ const MenuLink = styled(NavLink)`
   }
 `;
 
+const LawyerContainer = styled.div`
+  height: 600px;
+`;
+
+
+
+
 const PageA = () => (
   <div>
     <h2>Page A</h2>
-    {/* Add content for Page A */}
+    <LawyerProfile />
   </div>
 );
 
 const PageB = () => (
   <div>
     <h2>Page B</h2>
-    {/* Add content for Page B */}
+    <LawyerProfile />
   </div>
 );
 
 const PageC = () => (
   <div>
     <h2>Page C</h2>
-    {/* Add content for Page C */}
+    <LawyerProfile />
   </div>
 );
     
@@ -103,7 +111,10 @@ const LawyerPage = () => {
           {/* Add more menu items for additional tabs */}
         </MenuList>
       </MenuContainer>
-
+      <LawyerContainer>
+         <LawyerProfile />
+      </LawyerContainer>
+    
       <Outlet />
     </div>
   );
