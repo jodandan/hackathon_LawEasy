@@ -58,7 +58,7 @@ const PageC = () => (
     {/* Add content for Page C */}
   </div>
 );
-   
+    
 const LawyerPage = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
