@@ -3,6 +3,8 @@ import { styled } from "styled-components";
 import { BsPencilSquare } from "react-icons/bs";
 
 import CATEGORIES, { CATEGORIES_LINK } from "../../constants/categories";
+import { useEffect, useState } from "react";
+import { getPostList } from "../../api/api";
 
 const data = [
   {
@@ -134,7 +136,14 @@ const Yellow = styled.span`
 
 function PostList() {
   const { category } = useParams();
+
+  const [postList, setPostList] = useState([]);
   /* TODO 게시글 정보 가지고 오기 */
+  useEffect(() => {
+    getPostList("ALL")
+      .then((res) => setPostList(res.data.result.getPostResDtos))
+      .catch((e) => console.log(e));
+  }, []);
   /* 일단 더미 데이터 활용 */
   return (
     <Container>
@@ -152,7 +161,7 @@ function PostList() {
         ))}
       </CategoryList>
       <ListContainer>
-        {data.map((post) => (
+        {postList.map((post) => (
           <Post>
             <CategortName>{post.category}</CategortName>
             <PostTitle>
@@ -166,8 +175,8 @@ function PostList() {
             <CommentAuthor>
               <Yellow>답변 </Yellow> ChAT GPT의 답변입니다
             </CommentAuthor>
-            <Comment>{post.gpt_comment}</Comment>
-            <Created>{post.created_at}</Created>
+            <Comment>{post.gptComment}</Comment>
+            <Created>{post.createdAt}</Created>
           </Post>
         ))}
       </ListContainer>
