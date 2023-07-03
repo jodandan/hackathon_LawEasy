@@ -30,3 +30,6 @@ export const addComment = (id, comment) =>
 
 export const editComment = (id, comment) =>
   axiosWithLaw.patch(`/comments/${id}`, comment);
+
+export const getLawer = (category) =>
+  axiosWithLaw.get(`/lawyers?category=${category}`);

@@ -48,7 +48,12 @@ const Header = () => {
     <HeaderContainer>
       <div>
         <img src={logoTypeImg}></img>
-        <button>로그인/회원가입</button>
+        <Link to="/Signup">
+          <button>로그인</button>
+        </Link>
+        <Link to="/Signin">
+          <button>회원가입</button>
+        </Link>
         <Link to="/myPage" style={{ textDecoration: "none" }}>
           <Mypage>
             <BiSolidUserRectangle size="24" />
