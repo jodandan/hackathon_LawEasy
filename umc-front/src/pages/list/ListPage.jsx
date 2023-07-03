@@ -120,9 +120,9 @@ const ListWrite = () => {
   const selectCategory = (e) => {
     if (currentRef.current === e.target) return;
     // console.log()
-    // currentRef.current.classList.remove("select");
-    // currentRef.current = e.target;
-    e.target.classList.add("select");
+    // // currentRef.current.classList.remove("select");
+    // // currentRef.current = e.target;
+    // e.target.classList.add("select");
   };
 
   return (
