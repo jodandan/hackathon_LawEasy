@@ -4,8 +4,10 @@ import Header from './components/layouts/Headerco.jsx';
 import LawyerIntroduction from './pages/lawyer/LawyerPage.jsx';
 import ListWrite from './pages/list/ListPage.jsx';
 
+
 const App = () => {
   return (
+
     <Router>
       <Header />
       <Routes>
@@ -15,6 +17,7 @@ const App = () => {
       </Routes>
       
       </Router>
+
   );
 };
 
