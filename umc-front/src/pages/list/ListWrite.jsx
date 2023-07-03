@@ -169,8 +169,6 @@ const ListWrite = () => {
       content,
       selected,
     };
-
-    console.log(data);
   };
 
   return (

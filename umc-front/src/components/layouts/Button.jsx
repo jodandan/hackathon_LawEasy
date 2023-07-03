@@ -1,17 +1,18 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import React from "react";
+import { Link } from "react-router-dom";
+import styled from "styled-components";
+import CATEGORIES, { CATEGORIES_LINK } from "../../constants/categories";
 
 const CategoriesContainer = styled.div`
-    position: relative;
-    padding-left: 15%;
-    top: 31px;
+  position: relative;
+  padding-left: 15%;
+  top: 31px;
 `;
 
 const Button = styled.button`
   background-color: #ffffff;
   color: #333333;
-  border: 1px solid #FF60D2;
+  border: 1px solid #ff60d2;
   padding: 10px 20px;
   margin-right: 20px;
   width: 33%;
@@ -28,18 +29,11 @@ const Button = styled.button`
 const Categories = () => {
   return (
     <CategoriesContainer>
-        <Link to="/listWrite"><Button>재산</Button></Link>
-        <Link to="/listWrite"><Button>사기</Button></Link>
-        <Link to="/listWrite"><Button>병역</Button></Link>
-        <Link to="/listWrite"><Button>의료</Button></Link>
-        <Link to="/listWrite"><Button>노동</Button></Link>
-        <Link to="/listWrite"><Button>폭력</Button></Link>
-        <Link to="/listWrite"><Button>사이버</Button></Link>
-        <Link to="/listWrite"><Button>교통</Button></Link>
-        <Link to="/listWrite"><Button>범죄</Button></Link>
-        <Link to="/listWrite"><Button>모욕</Button></Link>
-        <Link to="/listWrite"><Button>가정</Button></Link>
-        <Link to="/listWrite"><Button>기타</Button></Link>
+      {CATEGORIES.map((category) => (
+        <Link key={category} to={`/list/${CATEGORIES_LINK[category]}`}>
+          <Button>{category}</Button>
+        </Link>
+      ))}
     </CategoriesContainer>
   );
 };
