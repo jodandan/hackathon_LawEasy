@@ -1,68 +1,77 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import banner from '../../assets/ban.png';
+import axios from 'axios'; // axios 모듈 import
+
 import { Container, Comment, EditContainer, MainText, Banner, User, UserText } from '../../style/ListDetailPageStyle.jsx';
-import FooterLaw from '../../components/layouts/Footer';
+
+const ListDetail = () => {
 
 
 // const [mainText, setMainText] = useState('');
+// const [comment, setComment] = useState('');
+// const {id } = useParams();
 
 // useEffect(() => {
-//   const fetchData = async () => {
+//     fetchComment(id); // 페이지가 로드될 때 호출
+//     const fetchMainText = async (id) => {
+//         try {
+//           const response = await axios.get(`http://13.124.104.174:8080/app/guide/gpt`);
+//           setMainText(response.data);
+//         } catch (error) {
+//           console.error(error);
+//         }
+//       };
+
+//   const fetchComment = async () => {
 //     try {
-//       const response = await axios.get('API_URL'); // API_URL을 실제 API 엔드포인트로 변경해야 합니다.
-//       setMainText(response.data.mainText);
+//       const response = await axios.get(`http://13.124.104.174:8080/app/guide/${id}`);
+//       setComment(response.data); // 받아온 데이터를 상태에 저장
 //     } catch (error) {
 //       console.error(error);
 //     }
 //   };
 
-//   fetchData();
+//   fetchMainText();
+//   fetchComment();
 // }, []);
 
-const ListDetail = () => {
+
   return (
-   <div>
-    <Container>
-      <EditContainer>
-        <MainText>
+    <div>
+      <Container>
+        <EditContainer>
+          <MainText>
             <p>사이버</p>
-            <h1>트위터 디엠 통매음 고소 닉네임, 카테고리, 타이틀,본문내용</h1>
-            <p>얼마 전 트위터 디엠으로 어쩌꼬 저쩌공 럼ㅇ베아러니멍아러너아달, 아저애러미이나어리저디안얼어차앚다어다아아
-            얼마 전 트위터 디엠으로 어쩌꼬 저쩌공 럼ㅇ베아러니멍아러너아달, 아저애러미이나어리저디안얼어차앚다어다아아
-            얼마 전 트위터 디엠으로 어쩌꼬 저쩌공 럼ㅇ베아러니멍아러너아달, 아저애러미이나어리저디안얼어차앚다어다아아
-            </p>
-            {/* <p>{mainText}</p> */}
+            <h1></h1>
+            <p></p>
+            {/* <p>{mainText.categories}</p> 
+            <h1>{mainText.title}</h1> 
+            <p>{mainText.content}</p> 
+            <p>{mainText.nickname}</p>  */}
             <p>2021.02.03</p>
-        </MainText>
-        <Banner>
-            <img src={banner}></img>
-        </Banner>
-        <p>👑 답변</p>
-        <Comment>
+          </MainText>
+          <Banner>
+            <img src={banner} alt="배너" /> {/* 이미지에는 alt 속성을 추가해주는 것이 좋습니다. */}
+          </Banner>
+          <p>👑 답변</p>
+          <Comment>
             <User></User>
-            <UserText>
-                <p>CHAT GPT</p>
-                <p>addngldadigdfddfdfadgdagrjnhgmhf
-                ㅇㄴㄻㅇㄹ
-                ㅁㅇㅁㄻㅇ
-                ㅁㅇㄻㄴㅇㄻㄴㅇㄻㅇㄴㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㅇㄻㄴㄹㅇ
-                ㅁㄴㅇㅁㄹㄹㄹㄹㄹㄹㄹㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</p>
+            {/* {comments.map((comment) => (
+            <Comment key={comment.id}>
+              <User></User>
+              <UserText>
+                <p>{comment.nickname}</p>
+                <p>{comment.comment}</p>
                 <p>2023.07.03</p>
-            </UserText>
-        </Comment>
-        
-         {/* 가운데 디브 */}
-         {/* 그리고 그 안에 본문container */}
-         {/* 밑에 배너 */}
-         {/* 그리고 댓글 */}
-      </EditContainer>
-    </Container>
-    {/* <FooterLaw></FooterLaw> */}
-    
-   
-   </div>
+              </UserText>
+            </Comment>
+          ))} */}
+          </Comment>
+        </EditContainer>
+      </Container>
+    </div>
   );
 };
 
