@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logoTypeImg from '../../assets/LogoLaw.png'
 import styled from 'styled-components';
+import {BiSolidUserRectangle} from 'react-icons/bi';
 
 const HeaderContainer = styled.header`
   padding-left:10%;
@@ -35,12 +36,21 @@ const NAVContainer = styled.div`
   position: relative;
 `;
 
+const Mypage = styled.div`
+    position: absolute;
+    left: 83%;
+    top: 68%;
+    z-index: 999;
+`;
+
 const Header = () => {
   return (
     <HeaderContainer>
       <div>
         <img src={logoTypeImg}></img>
         <button>로그인/회원가입</button>
+         <Link to="/myPage" style={{ textDecoration: "none" }}><Mypage><BiSolidUserRectangle size="24" /></Mypage></Link>
+       
       </div>
 
       <NAVContainer>
