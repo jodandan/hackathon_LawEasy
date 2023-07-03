@@ -1,5 +1,6 @@
+import React, { useState } from "react";
 import styled from "styled-components";
-import { Routes, Route, Link, Navigate } from "react-router-dom";
+import { useLocation, NavLink, Outlet } from "react-router-dom";
 
 const MenuContainer = styled.div`
   display: flex;
@@ -18,56 +19,92 @@ const MenuList = styled.ul`
 
 const MenuItem = styled.li`
   margin-right: 25px;
-  
-  
+
   &:last-child {
     margin-right: 0;
   }
-
-  
 `;
 
-const MenuLink = styled(Link)`
+const MenuLink = styled(NavLink)`
   text-decoration: none;
   color: #000;
   padding: 5px;
   font-family: Arial, sans-serif;
   font-size: 16px;
+
+  &.active {
+    /* Add styles for active tab */
+    font-weight: bold;
+  }
 `;
 
 const PageA = () => (
-    <div>
-      <h2>Page A</h2>
-      
-    </div>
-  );
-  
-  const PageB = () => (
-    <div>
-      <h2>Page B</h2>
-      {/* Add content for Page B */}
-    </div>
-  );
+  <div>
+    <h2>Page A</h2>
+    {/* Add content for Page A */}
+  </div>
+);
+
+const PageB = () => (
+  <div>
+    <h2>Page B</h2>
+    {/* Add content for Page B */}
+  </div>
+);
+
+const PageC = () => (
+  <div>
+    <h2>Page C</h2>
+    {/* Add content for Page C */}
+  </div>
+);
 
 const LawyerPage = () => {
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const activeTab = queryParams.get("activeTab") || "1";
+
+  const handleTabClick = (tabNumber) => {
+    queryParams.set("activeTab", tabNumber);
+    window.history.replaceState(null, "", `${location.pathname}?${queryParams}`);
+  };
+
   return (
     <div>
       <MenuContainer>
         <MenuList>
           <MenuItem>
-            <MenuLink to="/1">Page A</MenuLink>
+            <MenuLink
+              to="?activeTab=1"
+              onClick={() => handleTabClick(1)}
+              isActive={() => activeTab === "1"}
+            >
+              Page A
+            </MenuLink>
           </MenuItem>
           <MenuItem>
-            <MenuLink to="/2">Page B</MenuLink>
+            <MenuLink
+              to="?activeTab=2"
+              onClick={() => handleTabClick(2)}
+              isActive={() => activeTab === "2"}
+            >
+              Page B
+            </MenuLink>
           </MenuItem>
+          <MenuItem>
+            <MenuLink
+              to="?activeTab=3"
+              onClick={() => handleTabClick(3)}
+              isActive={() => activeTab === "3"}
+            >
+              Page C
+            </MenuLink>
+          </MenuItem>
+          {/* Add more menu items for additional tabs */}
         </MenuList>
       </MenuContainer>
 
-      <Routes>
-        <Route path="/" />
-        <Route path="/1" element={<PageA />} />
-        <Route path="/2" element={<PageB />} />
-      </Routes>
+      <Outlet />
     </div>
   );
 };
