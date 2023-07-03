@@ -8,7 +8,8 @@ import ListDetail from "./pages/listDetail/ListDetailPage.jsx";
 import ListWrite from "./pages/list/ListWrite.jsx";
 import FooterLaw from "./components/layouts/Footer.jsx";
 import PostList from "./pages/list/PostList.jsx";
-
+import Signup from "./pages/sign/Signup.jsx"
+import Signin from "./pages/sign/Signin.jsx";
 const App = () => {
   return (
     <Router>
@@ -20,6 +21,8 @@ const App = () => {
         <Route path="/listWrite" element={<ListWrite />} />
         <Route path="/list/:category" element={<PostList />} />
         <Route path="/myPage" element={<MyProfile />} />
+        <Route path="/Signup" element={<Signup />} />
+        <Route path="/Signin" element={<Signin />} />
       </Routes>
       <FooterLaw />
     </Router>
