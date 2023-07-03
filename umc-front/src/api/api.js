@@ -5,7 +5,7 @@ const axiosWithLaw = axios.create({
   headers: {
     "Content-type": "application/json",
     "X-ACCESS-TOKEN":
-      "eyJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJtZW1iZXJJZCI6MywiaWF0IjoxNjg4NDE2NTQxLCJleHAiOjE2ODk4ODc3NzB9.g-QlyKPzWhtURy3ThwlVGfF6B8bCzEhBjee7LeNI4sk",
+      "eyJ0eXBlIjoiand0IiwiYWxnIjoiSFMyNTYifQ.eyJtZW1iZXJJZCI6MiwiaWF0IjoxNjg4NDE2NTQ5LCJleHAiOjE2ODk4ODc3Nzh9.ptEXyDZRFSy-hxU0ZEUzBKc0D9THCiJcfWXmykZ5iqQ",
   },
 });
 

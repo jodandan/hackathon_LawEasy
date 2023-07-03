@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import banner from "../../assets/ban.png";
@@ -12,7 +12,6 @@ import {
   UserText,
 } from "../../style/ListDetailPageStyle.jsx";
 import FooterLaw from "../../components/layouts/Footer";
-import { getPost } from "../../api/api";
 
 const CommentUpdate = styled.div`
   width: 100%;
@@ -29,11 +28,6 @@ const CommentUpdate = styled.div`
 `;
 
 const ListDetail = () => {
-  useEffect(() => {
-    getPost("11")
-      .then((res) => console.log(res))
-      .catch((e) => console.log(e));
-  }, []);
   const [comment, setComment] = useState(""); // 댓글을 저장할 상태
   const [commentInput, setCommentInput] = useState(""); // 댓글 입력 값을 관리할 상태
   const submitComment = () => {
