@@ -2,9 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Categories from '../../components/layouts/Button';
+import FooterLaw from '../../components/layouts/Footer';
 
 const MainContainer = styled.div`
     display: flex;
+    margin-bottom: 10%;
 `;
 
 const TextContainer = styled.div`
@@ -26,6 +28,15 @@ const Button = styled.button`
     width: 45%;
     height: 50px;
     font-size: 1.2rem;
+`;
+
+const Laweasy = styled.div`
+   background-color: #d8d8d8;
+  display: flex;
+  justify-content: center; /* Center align the content horizontally */
+  align-items: center; /* Center align the content vertically */
+  margin-top: 5%;
+  height: 200px; 
 `;
 
 const MainPage = () => {
@@ -51,11 +62,13 @@ const MainPage = () => {
     <Button>
     Try Laweasy
     </Button>
+    <Link to="/listDetail">상세</Link>
     </TextContainer>
     <Categories></Categories>
-    </MainContainer>
-    
    
+    </MainContainer>
+{/*     
+    <FooterLaw></FooterLaw> */}
 
    {/* try 버튼  */}
    {/* 카테고리 */}
