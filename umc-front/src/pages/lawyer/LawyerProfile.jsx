@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import { getLawer } from "../../api/api";
 
 const ProfileGrid = styled.div`
   padding-top: 30px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Add an additional column for the divider */
+  grid-template-columns: repeat(
+    2,
+    1fr
+  ); /* Add an additional column for the divider */
   grid-gap: 20px;
   margin: 0px 120px;
   padding-bottom: 10px;
 `;
- 
+
 const ProfileItem = styled.div`
   border: 1px solid #ccc;
   padding: 10px;
@@ -39,56 +43,27 @@ const AdditionalInfo = styled.span`
 `;
 
 const LawyerProfile = () => {
-  const profiles = [
-    {
-      nickname2: "해결사",
-      nickname: "쉽고 친절한 변호사",
-      name: "ㅇㅇㅇ변호사",
-      introduction: "나는야 변호사",
-      phonePrice: "$5/minute", // Phone consultation price
-      videoPrice: "$10/minute", // Video consultation price
-    },
-    {
-        nickname2: "해결사",
-        nickname: "쉽고 친절한 변호사",
-        name: "ㅇㅇㅇ변호사",
-        introduction: "나는야 변호사",
-        phonePrice: "$5/minute", // Phone consultation price
-        videoPrice: "$10/minute", // Video consultation price
-      },
-      {
-        nickname2: "해결사",
-        nickname: "쉽고 친절한 변호사",
-        name: "ㅇㅇㅇ변호사",
-        introduction: "나는야 변호사",
-        phonePrice: "$5/minute", // Phone consultation price
-        videoPrice: "$10/minute", // Video consultation price
-      },
-      {
-        nickname2: "해결사",
-        nickname: "쉽고 친절한 변호사",
-        name: "ㅇㅇㅇ변호사",
-        introduction: "나는야 변호사",
-        phonePrice: "$5/minute", // Phone consultation price
-        videoPrice: "$10/minute", // Video consultation price
-      },
-    // ...other profiles
-  ];
+  const [lawer, setLawer] = useState([]);
+  useEffect(() => {
+    getLawer("LABOR")
+      .then((res) => setLawer(res.data.result))
+      .catch((e) => console.log(e));
+  }, []);
 
   return (
     <ProfileGrid>
-      {profiles.map((profile, index) => (
+      {lawer.map((profile, index) => (
         <>
           <ProfileItem key={index}>
             <p>
-                {profile.nickname},{profile.nickname2}
-                <p>
-                    <AdditionalInfo>추가 정보가 여기에 들어갑니다</AdditionalInfo>
-                </p>
+              {profile.company}
+              <p>
+                <AdditionalInfo>{profile.description}</AdditionalInfo>
+              </p>
             </p>
-            
+
             <h3>{profile.name}</h3>
-            <p>Introduction: {profile.introduction}</p>
+            <p>Introduction: {profile.description}</p>
             <div>
               {/* Phone counseling cell */}
               <CounselingCell>

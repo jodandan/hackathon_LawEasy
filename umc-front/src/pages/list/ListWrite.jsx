@@ -3,8 +3,9 @@ import styled from "styled-components";
 import { AiOutlineCheckCircle } from "react-icons/ai";
 import { RxBox } from "react-icons/rx";
 
-import CATEGORIES from "../../constants/categories";
+import CATEGORIES, { CATEGORIES_LINK } from "../../constants/categories";
 import { addPost } from "../../api/api";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   min-width: 100vw;
@@ -131,6 +132,8 @@ const ListWrite = () => {
   const [selected, setSelected] = useState("");
   const [agree, setAgree] = useState(false);
 
+  const navigate = useNavigate();
+
   const changeTitle = (e) => {
     setTitle(e.target.value);
   };
@@ -156,7 +159,7 @@ const ListWrite = () => {
       alert("제목을 입력해주세요");
       return;
     }
-    if (content.length === 0 || content.length < 200) {
+    if (content.length === 0 || content.length < 20) {
       alert("본문을 입력해주세요");
       return;
     }
@@ -164,15 +167,15 @@ const ListWrite = () => {
       alert("카테고리를 선택해주세요");
       return;
     }
-
-    addPost(
-      JSON.stringify({
-        title: title,
-        content: content,
-        category: "PROPERTY",
+    addPost({
+      title: title,
+      content: content,
+      category: CATEGORIES_LINK[selected].toUpperCase(),
+    })
+      .then((res) => {
+        alert("작성되었습니다. ");
+        navigate(`/listDetail/${res.data.result.id}`);
       })
-    )
-      .then((res) => console.log(res))
       .catch((e) => console.log(e));
   };
 
@@ -216,7 +219,7 @@ const ListWrite = () => {
             <label htmlFor="content">
               내용{" "}
               <Blur>
-                (200자 이상<Yellow>*</Yellow>)
+                (20자 이상<Yellow>*</Yellow>)
               </Blur>
             </label>
             <Textarea

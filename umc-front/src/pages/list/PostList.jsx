@@ -140,7 +140,7 @@ function PostList() {
   const [postList, setPostList] = useState([]);
   /* TODO 게시글 정보 가지고 오기 */
   useEffect(() => {
-    getPostList("ALL")
+    getPostList(category.toUpperCase())
       .then((res) => setPostList(res.data.result.getPostResDtos))
       .catch((e) => console.log(e));
   }, []);

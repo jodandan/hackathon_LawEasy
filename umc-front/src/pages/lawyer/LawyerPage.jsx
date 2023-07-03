@@ -1,21 +1,19 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useLocation, NavLink, Outlet } from "react-router-dom";
-import LawyerProfile from './LawyerProfile'
+import LawyerProfile from "./LawyerProfile";
 
 const MenuContainer = styled.div`
-  padding-left:25px;
+  padding-left: 25px;
   display: flex;
   justify-content: space-between;
   margin: 0px 120px;
   padding-bottom: 10px;
   border-width: 100%;
   border-bottom: 1px solid #bcbcbc;
-  
 `;
 
 const MenuList = styled.ul`
-  
   display: flex;
   list-style: none;
   padding: 0;
@@ -44,12 +42,9 @@ const MenuLink = styled(NavLink)`
 `;
 
 const LawyerContainer = styled.div`
-  padding-left:25px;
+  padding-left: 25px;
   height: 600px;
 `;
-
-
-
 
 const PageA = () => (
   <div>
@@ -71,7 +66,7 @@ const PageC = () => (
     <LawyerProfile />
   </div>
 );
-    
+
 const LawyerPage = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -79,7 +74,11 @@ const LawyerPage = () => {
 
   const handleTabClick = (tabNumber) => {
     queryParams.set("activeTab", tabNumber);
-    window.history.replaceState(null, "", `${location.pathname}?${queryParams}`);
+    window.history.replaceState(
+      null,
+      "",
+      `${location.pathname}?${queryParams}`
+    );
   };
 
   return (
@@ -92,7 +91,7 @@ const LawyerPage = () => {
               onClick={() => handleTabClick(1)}
               isActive={() => activeTab === "1"}
             >
-              Page A
+              가정
             </MenuLink>
           </MenuItem>
           <MenuItem>
@@ -101,7 +100,7 @@ const LawyerPage = () => {
               onClick={() => handleTabClick(2)}
               isActive={() => activeTab === "2"}
             >
-              Page B
+              폭력
             </MenuLink>
           </MenuItem>
           <MenuItem>
@@ -110,16 +109,16 @@ const LawyerPage = () => {
               onClick={() => handleTabClick(3)}
               isActive={() => activeTab === "3"}
             >
-              Page C
+              노동
             </MenuLink>
           </MenuItem>
           {/* Add more menu items for additional tabs */}
         </MenuList>
       </MenuContainer>
       <LawyerContainer>
-         <LawyerProfile />
+        <LawyerProfile />
       </LawyerContainer>
-    
+
       <Outlet />
     </div>
   );
