@@ -6,6 +6,11 @@ import styled from 'styled-components';
 const HeaderContainer = styled.header`
   padding-left:10%;
   border-bottom: solid #b6b6b6 1px;
+  button {
+    border-style: none;
+    position: relative;
+    left: 65%;
+  }
   img {
     width: 150px;
     position: relative;

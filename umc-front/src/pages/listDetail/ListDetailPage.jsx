@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import banner from '../../assets/ban.png';
 import { Container, Comment, EditContainer, MainText, Banner, User, UserText } from '../../style/ListDetailPageStyle.jsx';
-
+import FooterLaw from '../../components/layouts/Footer';
 
 
 // const [mainText, setMainText] = useState('');
@@ -28,11 +28,12 @@ const ListDetail = () => {
       <EditContainer>
         <MainText>
             <p>사이버</p>
-            <h1>트위터 디엠 통매음 고소</h1>
+            <h1>트위터 디엠 통매음 고소 닉네임, 카테고리, 타이틀,본문내용</h1>
             <p>얼마 전 트위터 디엠으로 어쩌꼬 저쩌공 럼ㅇ베아러니멍아러너아달, 아저애러미이나어리저디안얼어차앚다어다아아
             얼마 전 트위터 디엠으로 어쩌꼬 저쩌공 럼ㅇ베아러니멍아러너아달, 아저애러미이나어리저디안얼어차앚다어다아아
             얼마 전 트위터 디엠으로 어쩌꼬 저쩌공 럼ㅇ베아러니멍아러너아달, 아저애러미이나어리저디안얼어차앚다어다아아
             </p>
+            {/* <p>{mainText}</p> */}
             <p>2021.02.03</p>
         </MainText>
         <Banner>
@@ -58,6 +59,7 @@ const ListDetail = () => {
          {/* 그리고 댓글 */}
       </EditContainer>
     </Container>
+    {/* <FooterLaw></FooterLaw> */}
     
    
    </div>

@@ -5,6 +5,7 @@ import Main from './pages/main/Main.jsx';
 import LawyerIntroduction from './pages/lawyer/LawyerPage.jsx';
 import ListDetail from './pages/listDetail/ListDetailPage.jsx';
 import ListWrite from './pages/list/ListPage.jsx';
+import FooterLaw from './components/layouts/Footer.jsx';
 
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
       <Route path="/listWrite" element={<ListWrite/>} />
 
       </Routes>
+      <FooterLaw />
     </Router>
   );
 };
