@@ -126,6 +126,7 @@ const ListWrite = () => {
   };
 
   return (
+
     <Container>
       <EditContainer>
         <EditDesc>
@@ -175,6 +176,7 @@ const ListWrite = () => {
         </InputContainer>
       </EditContainer>
     </Container>
+
   );
 };
 
