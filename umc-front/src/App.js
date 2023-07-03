@@ -1,13 +1,24 @@
-import { BrowserRouter, Routes } from "react-router-dom";
-import styled from "styled-components";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/layouts/Headerco.jsx';
+import LawyerIntroduction from './pages/lawyer/LawyerPage.jsx';
+import ListWrite from './pages/list/ListPage.jsx';
 
-function App() {
+
+const App = () => {
   return (
-    <BrowserRouter>
-      <div>헤더</div>
-      <Routes></Routes>
-    </BrowserRouter>
+
+    <Router>
+      <Header />
+      <Routes>
+      {/* <Route exact path="/" component={Home} /> */}
+      <Route path="/lawyer-introduction" element={<LawyerIntroduction/>} />
+      <Route path="/listWrite" element={<ListWrite/>} />
+      </Routes>
+      
+      </Router>
+
   );
-}
+};
 
 export default App;
