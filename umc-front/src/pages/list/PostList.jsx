@@ -155,7 +155,14 @@ function PostList() {
         {data.map((post) => (
           <Post>
             <CategortName>{post.category}</CategortName>
-            <PostTitle>{post.title}</PostTitle>
+            <PostTitle>
+              <Link
+                style={{ textDecoration: "none", color: "black" }}
+                to={`/listDetail/${post.id}`}
+              >
+                {post.title}
+              </Link>
+            </PostTitle>
             <CommentAuthor>
               <Yellow>답변 </Yellow> ChAT GPT의 답변입니다
             </CommentAuthor>

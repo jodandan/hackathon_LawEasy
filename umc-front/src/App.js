@@ -16,7 +16,7 @@ const App = () => {
       <Routes>
         <Route exact path="/" element={<Main />} />
         <Route path="/lawyer-introduction" element={<LawyerIntroduction />} />
-        <Route path="/listDetail" element={<ListDetail />} />
+        <Route path="/listDetail/:id" element={<ListDetail />} />
         <Route path="/listWrite" element={<ListWrite />} />
         <Route path="/list/:category" element={<PostList />} />
         <Route path="/myPage" element={<MyProfile />} />
