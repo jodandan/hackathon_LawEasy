@@ -9,7 +9,7 @@ const ProfileGrid = styled.div`
   margin: 0px 120px;
   padding-bottom: 10px;
 `;
-
+ 
 const ProfileItem = styled.div`
   border: 1px solid #ccc;
   padding: 10px;
