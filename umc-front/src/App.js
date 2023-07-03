@@ -9,18 +9,17 @@ import ListWrite from './pages/list/ListPage.jsx';
 
 const App = () => {
   return (
-
     <Router>
       <Header />
       <Routes>
+
       <Route exact path="/" element={<Main/>}  />
       <Route path="/lawyer-introduction" element={<LawyerIntroduction/>} />
       <Route path="/listDetail" element={<ListDetail/>} />
       <Route path="/listWrite" element={<ListWrite/>} />
-      </Routes>
-      
-      </Router>
 
+      </Routes>
+    </Router>
   );
 };
 
