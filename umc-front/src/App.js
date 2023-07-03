@@ -5,6 +5,7 @@ import Main from "./pages/main/Main.jsx";
 import LawyerIntroduction from "./pages/lawyer/LawyerPage.jsx";
 import ListDetail from "./pages/listDetail/ListDetailPage.jsx";
 import ListWrite from "./pages/list/ListWrite.jsx";
+import PostList from "./pages/list/PostList.jsx";
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <Route path="/lawyer-introduction" element={<LawyerIntroduction />} />
         <Route path="/listDetail" element={<ListDetail />} />
         <Route path="/listWrite" element={<ListWrite />} />
+        <Route path="/list/:category" element={<PostList />} />
       </Routes>
     </Router>
   );
